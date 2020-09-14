@@ -7,6 +7,10 @@
 }
 
 body {
+    background: #24272e;
+}
+
+header {
     background: white;
     padding: 20px;
 }
@@ -21,17 +25,17 @@ header > h1 {
     margin: 20px auto; /* margin of top and bottom, auto=center */
     border: 3px solid white;
     width: 200px;
-    font-family: 'Asap', sans-serif;
+    font-family: Asap, sans-serif;
     border-radius: 4px;
     text-align: center;
     color: white;
     font-size: 46px;
     padding: 15px 20px;
-    font-family: Asap, sans-serif;
+    position: relative;
 }
 
 
-.badges {
+.badge {
     background: #E2584D;
     color: white;
     font-size: 14px;
@@ -42,7 +46,18 @@ header > h1 {
 #user-label {
     position: absolute;
     top: 30px;
-    bottom: 30px;
+    left: -25px;
+}
 
+#computer-label {
+    position: absolute;
+    top: 30px;
+    right: -30px;
+}
 
+.result > p {
+    font-size: 48px;
+    color: white;
+    font-weight: bold;
+    font-family: Asap, sans-serif;
 }

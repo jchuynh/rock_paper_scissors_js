@@ -9,7 +9,7 @@ const paper_div = document.getElementById('paper');
 const scissors_div = document.getElementById('scissors');
 
 function getComputerChoice() {
-	const choices = ['Rock', 'Paper', 'Scissors'];
+	const choices = ['rock', 'paper', 'scissors'];
 	const randomNumber = Math.floor(Math.random() * 3);
 	return choices[randomNumber];
 }
@@ -24,44 +24,56 @@ function getComputerChoice() {
 
 // getComputerChoice();
 
+const capitalizeWord = (word) => {
+	if (typeof word !== 'string') return ''
+	return word.charAt(0).toUpperCase() + word.slice(1)
+}
 
 function win(user, computer) {
+	const userChoice_div = document.getElementById(user);
 	userScore++;
 	userScore_span.innerHTML = userScore;
 	computerScore_span.innerHTML = computerScore;
-	result_p.innerHTML = `${user} beats ${computer}. You Win!`;
-	document.getElementById(user).classList.add('green-glow');
+	result_p.innerHTML = `${capitalizeWord(user)} beats ${capitalizeWord(computer)}. You Win!`;
+	userChoice_div.classList.add('green-glow');
+	setTimeout(() => userChoice_div.classList.remove('green-glow'), 300);
 }
 
 function lose(user, computer) {
+	const userChoice_div = document.getElementById(user);
 	computerScore++;
 	userScore_span.innerHTML = userScore;
 	computerScore_span.innerHTML = computerScore;
-	result_p.innerHTML = `${computer} looses to ${user}. You Lose!`;
+	result_p.innerHTML = `${capitalizeWord(computer)} looses to ${capitalizeWord(user)}. You Lose!`;
+	userChoice_div.classList.add('red-glow');
+	setTimeout(() => userChoice_div.classList.remove('red-glow'), 300);
 }
 
 function draw(user, computer) {
+	const userChoice_div = document.getElementById(user);
 	userScore_span.innerHTML = userScore;
 	computerScore_span.innerHTML = computerScore;
-	result_p.innerHTML = `${computer} is the same as ${user}. Draw!`;
+	result_p.innerHTML = `${capitalizeWord(computer)} is the same as ${capitalizeWord(user)}. Draw!`;
+	userChoice_div.classList.add('gray-glow');
+	setTimeout(() => userChoice_div.classList.remove('gray-glow'), 300);
 }
 
 function game(userChoice) {
 	const computerChoice = getComputerChoice();
 	switch (userChoice + computerChoice) {
-		case 'RockScissors':
-		case 'PaperRock':
-		case 'ScissorsPaper':
+		case 'rockscissors':
+		case 'paperrock':
+		case 'scissorspaper':
 			win(userChoice, computerChoice);
 			break;
-		case 'RockPaper':
-		case 'PaperScissors':
-		case 'ScissorsRock':
+		case 'rockpaper':
+		case 'paperscissors':
+		case 'scissorsrock':
 			lose(userChoice, computerChoice);
 			break;
-		case 'RockRock':
-		case 'PaperPaper':
-		case 'ScissorsScissors':
+		case 'rockrock':
+		case 'paperpaper':
+		case 'scissorsscissors':
 			draw(userChoice, computerChoice);
 			break;
 	}
@@ -69,15 +81,15 @@ function game(userChoice) {
 
 function main() {
 	rock_div.addEventListener('click', function() {
-		game('Rock');
+		game('rock');
 	})
 
 	paper_div.addEventListener('click', function() {
-		game('Paper');
+		game('paper');
 	})
 
 	scissors_div.addEventListener('click', function() {
-		game('Scissors');
+		game('scissors');
 	})
 }
 

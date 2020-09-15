@@ -60,8 +60,10 @@ header > h1 {
 .result > p {
     font-size: 48px;
     color: white;
+    text-align: center;
     font-weight: bold;
     font-family: Asap, sans-serif;
+    margin-bottom: 20px;
 }
 
 .choices {
